@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
+require 'json'
+
 require_relative "openweathermap/version"
 require_relative "openweathermap/coordinates"
 require_relative "openweathermap/city"
+require_relative "openweathermap/weather_conditions"
 
 module OpenWeatherMap
   class Error < StandardError; end
@@ -12,6 +15,11 @@ module OpenWeatherMap
     ENDPOINT = "https://api.openweathermap.org"
     WEATHER_URL = "/data/2.5/weather"
     FORECAST_URL = "/data/2.5/forecast"
+  end
+
+  module Exceptions
+    ## Exception to handle data error
+    class DataError < OpenWeatherMap::Error; end
   end
 end
 
