@@ -20,7 +20,8 @@ Gem::Specification.new do |spec|
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
   spec.files = [
     "lib/openweathermap.rb",
-    "lib/openweathermap/version.rb"
+    "lib/openweathermap/version.rb",
+    "lib/openweathermap/coordinates.rb",
   ]
 
   spec.bindir = "exe"
