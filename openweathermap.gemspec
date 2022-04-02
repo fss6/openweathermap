@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
     "lib/openweathermap/coordinates.rb",
     "lib/openweathermap/city.rb",
     "lib/openweathermap/weather_conditions.rb"
+    "lib/openweathermap/current_weather"
   ]
 
   spec.bindir = "exe"
