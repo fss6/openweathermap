@@ -10,11 +10,6 @@ module OpenWeatherMap
     #
     # @param data [Hash] all the received data
     def initialize(data)
-      begin
-        data = JSON.parse(data)
-      rescue JSON::JSONError => e
-        raise OpenWeatherMap::Exceptions::DataError, "error: #{e}"
-      end
       @time = Time.at(data["dt"])
       @main = data["weather"][0]["main"]
       @description = data["weather"][0]["description"]
