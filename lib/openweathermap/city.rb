@@ -4,7 +4,7 @@ module OpenWeatherMap
   ## Represents a city
   class City
     attr_reader :name, :country, :coordinates
-    
+
     ##
     # Create a new City object
     #
@@ -19,9 +19,3 @@ module OpenWeatherMap
     end
   end
 end
-
-
-
-
-
-

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe 'WeatherCondition' do
+RSpec.describe "WeatherCondition" do
   before do
-    @data =  JSON.parse({
+    @data = JSON.parse({
       "weather": [
         {
           "main": "Clouds",
@@ -14,18 +14,18 @@ RSpec.describe 'WeatherCondition' do
       "dt": 1648932292
     }.to_json)
   end
-  
+
   it "has CurrentWeather instance" do
     wc = OpenWeatherMap::WeatherCondition.new(@data)
     expect(wc).to be_a_kind_of(OpenWeatherMap::WeatherCondition)
   end
 
   it "CurrentWeather raises ArgumentError" do
-    expect{ 
-      OpenWeatherMap::WeatherCondition.new 
-    }.to raise_error(ArgumentError)
+    expect do
+      OpenWeatherMap::WeatherCondition.new
+    end.to raise_error(ArgumentError)
   end
-  
+
   it "WeatherCondition has main, description and temperature" do
     wc = OpenWeatherMap::WeatherCondition.new(@data)
     expect(wc.main).to eq(@data["weather"][0]["main"])

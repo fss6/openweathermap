@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe 'Constants' do
+RSpec.describe "Constants" do
   it "has a endpoint" do
     expect(OpenWeatherMap::Constants::ENDPOINT).not_to be nil
   end

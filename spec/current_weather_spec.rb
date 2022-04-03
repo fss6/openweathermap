@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe 'CurrentWeather' do
+RSpec.describe "CurrentWeather" do
   before do
     @data = {
       "name": "Newtonhill",
@@ -20,24 +20,24 @@ RSpec.describe 'CurrentWeather' do
       "dt": 1648932292
     }
   end
-  
+
   it "has CurrentWeather instance" do
     cw = OpenWeatherMap::CurrentWeather.new(@data.to_json)
     expect(cw).to be_a_kind_of(OpenWeatherMap::CurrentWeather)
   end
 
   it "CurrentWeather raises ArgumentError" do
-    expect{ 
-      OpenWeatherMap::CurrentWeather.new 
-    }.to raise_error(ArgumentError)
+    expect do
+      OpenWeatherMap::CurrentWeather.new
+    end.to raise_error(ArgumentError)
   end
 
   it "CurrentWeather raises OpenWeatherMap::Exceptions::DataError" do
-    expect{ 
-      OpenWeatherMap::CurrentWeather.new("") 
-    }.to raise_error(OpenWeatherMap::Exceptions::DataError)
+    expect do
+      OpenWeatherMap::CurrentWeather.new("")
+    end.to raise_error(OpenWeatherMap::Exceptions::DataError)
   end
-  
+
   it "CurrentWeather has a City" do
     cw = OpenWeatherMap::CurrentWeather.new(@data.to_json)
     expect(cw.city).to be_a_kind_of(OpenWeatherMap::City)

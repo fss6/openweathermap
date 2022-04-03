@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-RSpec.describe 'Coordinates' do
+RSpec.describe "Coordinates" do
   it "has Coordinates instance" do
     coordinates = OpenWeatherMap::Coordinates.new(0.123, 1.456)
     expect(coordinates).to be_a_kind_of(OpenWeatherMap::Coordinates)
   end
 
   it "Coordinates raises ArgumentError" do
-    expect{ OpenWeatherMap::Coordinates.new }.to raise_error(ArgumentError)
+    expect { OpenWeatherMap::Coordinates.new }.to raise_error(ArgumentError)
   end
 
   it "Coordinates has lat and lon" do

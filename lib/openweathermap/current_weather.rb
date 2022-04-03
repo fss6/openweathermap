@@ -16,12 +16,12 @@ module OpenWeatherMap
         raise OpenWeatherMap::Exceptions::DataError, "error: #{e}"
       end
       @city = OpenWeatherMap::City.new(
-        data["name"], 
-        data["coord"]["lon"], 
-        data["coord"]["lat"], 
+        data["name"],
+        data["coord"]["lon"],
+        data["coord"]["lat"],
         data["sys"]["country"]
       )
-      @weather_condition = OpenWeatherMap::WeatherCondition.new(data) 
+      @weather_condition = OpenWeatherMap::WeatherCondition.new(data)
     end
   end
 end

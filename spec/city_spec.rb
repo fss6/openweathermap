@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-RSpec.describe 'City' do
+RSpec.describe "City" do
   it "has City instance" do
     city = OpenWeatherMap::City.new("City name", "Country name", 0.123, 1.456)
     expect(city).to be_a_kind_of(OpenWeatherMap::City)
   end
 
   it "City raises ArgumentError" do
-    expect{ OpenWeatherMap::City.new }.to raise_error(ArgumentError)
+    expect { OpenWeatherMap::City.new }.to raise_error(ArgumentError)
   end
 
   it "City has name and country" do
