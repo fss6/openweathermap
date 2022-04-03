@@ -43,8 +43,8 @@ RSpec.describe 'CurrentWeather' do
     expect(cw.city).to be_a_kind_of(OpenWeatherMap::City)
   end
 
-  it "CurrentWeather has a WeatherConditions" do
+  it "CurrentWeather has a WeatherCondition" do
     cw = OpenWeatherMap::CurrentWeather.new(@data.to_json)
-    expect(cw.weather_conditions).to be_a_kind_of(OpenWeatherMap::WeatherConditions)
+    expect(cw.weather_condition).to be_a_kind_of(OpenWeatherMap::WeatherCondition)
   end
 end

@@ -3,14 +3,14 @@
 module OpenWeatherMap
   ## Represents the current weather at a location
   class CurrentWeather
-    attr_reader :weather_conditions, :city
+    attr_reader :weather_condition, :city
 
     ##
     # Create a new CurrentWeather object
     #
     # @param data [Hash] mixed data from the request
     def initialize(data)
-        @weather_conditions = OpenWeatherMap::WeatherConditions.new(data)
+        @weather_condition = OpenWeatherMap::WeatherCondition.new(data)
         begin
           data = JSON.parse(data)
         rescue JSON::JSONError => e
