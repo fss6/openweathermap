@@ -56,6 +56,11 @@ RSpec.describe "Forecast" do
   it "Forecast has a City" do
     forecast = OpenWeatherMap::Forecast.new(@data)
     expect(forecast.city).to be_a_kind_of(OpenWeatherMap::City)
+    data = JSON.parse(@data)
+    expect(forecast.city.name).to eq(data["city"]["name"])
+    expect(forecast.city.country).to eq(data["city"]["country"])
+    expect(forecast.city.coordinates.lon).to eq(data["city"]["coord"]["lon"])
+    expect(forecast.city.coordinates.lat).to eq(data["city"]["coord"]["lat"])
   end
 
   it "Forecast has many WeatherConditions" do

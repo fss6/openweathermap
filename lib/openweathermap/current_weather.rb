@@ -17,9 +17,9 @@ module OpenWeatherMap
       end
       @city = OpenWeatherMap::City.new(
         data["name"],
+        data["sys"]["country"],
         data["coord"]["lon"],
-        data["coord"]["lat"],
-        data["sys"]["country"]
+        data["coord"]["lat"]
       )
       @weather_condition = OpenWeatherMap::WeatherCondition.new(data)
     end

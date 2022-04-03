@@ -18,11 +18,11 @@ RSpec.describe "CurrentWeather" do
       ],
       "main": { "temp": 0.66 },
       "dt": 1648932292
-    }
+    }.to_json
   end
 
   it "has CurrentWeather instance" do
-    cw = OpenWeatherMap::CurrentWeather.new(@data.to_json)
+    cw = OpenWeatherMap::CurrentWeather.new(@data)
     expect(cw).to be_a_kind_of(OpenWeatherMap::CurrentWeather)
   end
 
@@ -39,12 +39,17 @@ RSpec.describe "CurrentWeather" do
   end
 
   it "CurrentWeather has a City" do
-    cw = OpenWeatherMap::CurrentWeather.new(@data.to_json)
+    cw = OpenWeatherMap::CurrentWeather.new(@data)
     expect(cw.city).to be_a_kind_of(OpenWeatherMap::City)
+    data = JSON.parse(@data)
+    expect(cw.city.name).to eq(data["name"])
+    expect(cw.city.country).to eq(data["sys"]["country"])
+    expect(cw.city.coordinates.lon).to eq(data["coord"]["lon"])
+    expect(cw.city.coordinates.lat).to eq(data["coord"]["lat"])
   end
 
   it "CurrentWeather has a WeatherCondition" do
-    cw = OpenWeatherMap::CurrentWeather.new(@data.to_json)
+    cw = OpenWeatherMap::CurrentWeather.new(@data)
     expect(cw.weather_condition).to be_a_kind_of(OpenWeatherMap::WeatherCondition)
   end
 end
