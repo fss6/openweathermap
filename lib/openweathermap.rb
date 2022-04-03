@@ -7,6 +7,7 @@ require_relative "openweathermap/coordinates"
 require_relative "openweathermap/city"
 require_relative "openweathermap/weather_condition"
 require_relative "openweathermap/current_weather"
+require_relative "openweathermap/forecast"
 
 module OpenWeatherMap
   class Error < StandardError; end

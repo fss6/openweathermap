@@ -2,11 +2,12 @@
 
 module OpenWeatherMap
   ## Represents the current weather at a location
-  class CurrentWeather
-    attr_reader :weather_condition, :city
+  # Represents the forecast for a specific location
+  class Forecast
+    attr_reader :city, :weather_conditions
 
     ##
-    # Create a new CurrentWeather object
+    # Create a new Forecast object
     #
     # @param data [Hash] mixed data from the request
     def initialize(data)
@@ -16,12 +17,14 @@ module OpenWeatherMap
         raise OpenWeatherMap::Exceptions::DataError, "error: #{e}"
       end
       @city = OpenWeatherMap::City.new(
-        data["name"], 
-        data["coord"]["lon"], 
-        data["coord"]["lat"], 
-        data["sys"]["country"]
+        data["city"]["name"], 
+        data["city"]["coord"]["lon"], 
+        data["city"]["coord"]["lat"], 
+        data["city"]["country"]
       )
-      @weather_condition = OpenWeatherMap::WeatherCondition.new(data) 
+      @weather_conditions = data["list"].collect { |w| 
+        OpenWeatherMap::WeatherCondition.new(w) 
+      }
     end
   end
 end
