@@ -1,34 +1,124 @@
 # OpenWeatherMap
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/openweathermap`. To experiment with that code, run `bin/console` for an interactive prompt.
+An implementation to use the OpenWeatherMap API.
 
-TODO: Delete this and the text above, and describe your gem
+## Requirements 
+
+```ruby
+ruby >= "2.6.0"
+```
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'openweathermap'
+gem "openweathermap", git: "https://github.com/fss6/openweathermap.git", branch: "main"
 ```
 
 And then execute:
 
     $ bundle install
 
-Or install it yourself as:
-
-    $ gem install openweathermap
-
 ## Usage
 
-TODO: Write usage instructions here
+### Setup
+Include the openweathermap library in your project:
+```ruby
+include 'openweathermap'
+```
 
-## Development
+Initialize the OpenWeatherMap API:
+```ruby
+api = OpenWeatherMap::API.new(API_KEY, LANG)
+```
+The initialize parameters:
+* API_KEY: get your api on the website 
+* LANG: supported languages that you can use with the corresponded lang values:
+    * [af] Afrikaans
+    * [al] Albanian
+    * [ar] Arabic
+    * [az] Azerbaijani
+    * [bg] Bulgarian
+    * [ca] Catalan
+    * [cz] Czech
+    * [da] Danish
+    * [de] German
+    * [el] Greek
+    * [en] English
+    * [eu] Basque
+    * [fa] Persian (Farsi)
+    * [fi] Finnish
+    * [fr] French
+    * [gl] Galician
+    * [he] Hebrew
+    * [hi] Hindi
+    * [hr] Croatian
+    * [hu] Hungarian
+    * [id] Indonesian
+    * [it] Italian
+    * [ja] Japanese
+    * [kr] Korean
+    * [la] Latvian
+    * [lt] Lithuanian
+    * [mk] Macedonian
+    * [no] Norwegian
+    * [nl] Dutch
+    * [pl] Polish
+    * [pt] Portuguese
+    * [pt_br] Português Brasil (DEFAULT)
+    * [ro] Romanian
+    * [ru] Russian
+    * [sv, se]	Swedish
+    * [sk] Slovak
+    * [sl] Slovenian
+    * [sp, es]	Spanish
+    * [sr] Serbian
+    * [th] Thai
+    * [tr] Turkish
+    * [ua, uk] Ukrainian
+    * [vi] Vietnamese
+    * [zh_cn] Chinese Simplified
+    * [zh_tw] Chinese Traditional
+    * [zu] Zulu
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+  
+### Get current weather
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To get the current weather at a certain city:
+```ruby
+location = "Recife"
+api.current(location)
+```
+or
+
+```ruby
+lat = -8.05389
+lon = -34.88111
+location = [lon, lat]
+api.current(location)
+```
+
+for more detail: https://openweathermap.org/current
+
+### Get forecast
+
+To get the forecast for a certain city:
+
+```ruby
+location = "Recife"
+api.forecast(location)
+```
+or
+
+```ruby
+lat = -8.05389
+lon = -34.88111
+location = [lon, lat]
+api.forecast(location)
+```
+
+for more detail: https://openweathermap.org/forecast5
 
 ## Contributing
 
