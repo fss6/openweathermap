@@ -40,6 +40,11 @@ include 'openweathermap'
 
 Initialize the OpenWeatherMap API:
 ```ruby
+api = OpenWeatherMap::API.new(API_KEY) # lang default: pt_br
+```
+or
+
+```ruby
 api = OpenWeatherMap::API.new(API_KEY, LANG)
 ```
 The initialize parameters:
