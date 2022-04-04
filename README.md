@@ -15,10 +15,20 @@ Add this line to your application's Gemfile:
 ```ruby
 gem "openweathermap", git: "https://github.com/fss6/openweathermap.git", branch: "main"
 ```
-
 And then execute:
 
-    $ bundle install
+```bash
+$ bundle install
+```
+
+or
+
+```bash
+ $ git clone "https://github.com/fss6/openweathermap.git"
+ $ cd openweathermap
+ $ gem build openweathermap.gemspec
+ $ gem install openweathermap-0.1.0.gem
+```
 
 ## Usage
 
