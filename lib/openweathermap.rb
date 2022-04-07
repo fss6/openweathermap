@@ -30,8 +30,5 @@ module OpenWeatherMap
 
     ## Exception to tell that the API key isn't authorized
     class Unauthorized < OpenWeatherMap::Error; end
-
-    ## Exception to handle data error
-    class DataError < OpenWeatherMap::Error; end
   end
 end
